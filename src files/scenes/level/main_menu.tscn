@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8e2vrbq8qiah"]
+
+[ext_resource type="Script" path="res://scripts/env/main_menu_scene_switch.gd" id="1_37tqy"]
+
+[node name="Main menu" type="Node2D"]
+script = ExtResource("1_37tqy")
+
+[node name="Level_select" type="Button" parent="."]
+offset_left = 384.0
+offset_top = 328.0
+offset_right = 754.0
+offset_bottom = 424.0
+theme_override_font_sizes/font_size = 64
+text = "Level Select"
+
+[node name="MenuButton" type="MenuButton" parent="."]
+offset_left = 64.0
+offset_top = 648.0
+offset_right = 130.0
+offset_bottom = 831.0
+scale = Vector2(1.68, 1)
+theme_override_font_sizes/font_size = 128
+text = "?"
+item_count = 4
+popup/item_0/text = "B - bomb"
+popup/item_0/checked = true
+popup/item_0/id = 0
+popup/item_0/separator = true
+popup/item_1/text = "SPACE - shoot"
+popup/item_1/id = 1
+popup/item_1/separator = true
+popup/item_2/text = "SHIFT - slow down"
+popup/item_2/id = 2
+popup/item_2/separator = true
+popup/item_3/text = "no settings"
+popup/item_3/id = 3
+
+[connection signal="pressed" from="Level_select" to="." method="_on_level_select_pressed"]

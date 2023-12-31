@@ -1,0 +1,114 @@
+[gd_scene load_steps=5 format=3 uid="uid://biqpebctypftb"]
+
+[ext_resource type="Script" path="res://scripts/env/HUD_logic.gd" id="1_k0dt4"]
+[ext_resource type="Script" path="res://scripts/env/game_over_scene_switch.gd" id="2_8ebfg"]
+
+[sub_resource type="Gradient" id="Gradient_ceu0o"]
+offsets = PackedFloat32Array(0, 0.640523, 1)
+colors = PackedColorArray(0.407843, 0.054902, 0, 1, 0.580392, 0.0784314, 0.160784, 1, 0.746094, 0.265625, 0.300781, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uxy1x"]
+gradient = SubResource("Gradient_ceu0o")
+
+[node name="HUD" type="CanvasLayer" groups=["Scores"]]
+layer = 10
+script = ExtResource("1_k0dt4")
+
+[node name="Score" type="Label" parent="."]
+visibility_layer = 3
+offset_left = 904.0
+offset_top = 56.0
+offset_right = 967.0
+offset_bottom = 104.0
+theme_override_font_sizes/font_size = 32
+
+[node name="Upgrade" type="Label" parent="."]
+visibility_layer = 3
+offset_left = 944.0
+offset_top = 344.0
+offset_right = 985.0
+offset_bottom = 381.0
+scale = Vector2(1.17056, 1.35542)
+theme_override_font_sizes/font_size = 24
+text = "
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Bomb_count" type="Label" parent="."]
+visibility_layer = 3
+offset_left = 904.0
+offset_top = 216.0
+offset_right = 944.0
+offset_bottom = 264.0
+theme_override_font_sizes/font_size = 32
+
+[node name="Life" type="Label" parent="."]
+offset_left = 32.0
+offset_top = 40.0
+offset_right = 160.0
+offset_bottom = 104.0
+theme_override_font_sizes/font_size = 32
+text = "
+"
+
+[node name="Boss_hp_bar" type="TextureProgressBar" parent="."]
+visible = false
+visibility_layer = 3
+offset_left = 1016.0
+offset_top = 952.0
+offset_right = 1080.0
+offset_bottom = 1016.0
+rotation = -1.57138
+scale = Vector2(9.93601, 1.04357)
+value = 100.0
+rounded = true
+texture_progress = SubResource("GradientTexture2D_uxy1x")
+
+[node name="Scene_switch" type="Node" parent="."]
+script = ExtResource("2_8ebfg")
+
+[node name="Return_to_main" type="Button" parent="Scene_switch"]
+process_mode = 3
+visible = false
+offset_left = 376.0
+offset_top = 224.0
+offset_right = 736.0
+offset_bottom = 320.0
+theme_override_font_sizes/font_size = 64
+text = "Main menu"
+
+[node name="Restart" type="Button" parent="Scene_switch"]
+process_mode = 3
+visible = false
+offset_left = 360.0
+offset_top = 472.0
+offset_right = 753.0
+offset_bottom = 568.0
+theme_override_font_sizes/font_size = 64
+text = "Restart level"
+
+[node name="back to game" type="Button" parent="Scene_switch"]
+visible = false
+offset_left = 320.0
+offset_top = 704.0
+offset_right = 810.0
+offset_bottom = 800.0
+theme_override_font_sizes/font_size = 64
+text = "Return to game
+"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 9
+
+[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer"]
+light_mask = 0
+position = Vector2(888, 0)
+scale = Vector2(167.322, 141.467)
+color = Color(0.0509804, 0.290196, 0.321569, 1)
+polygon = PackedVector2Array(0, 0, 2.20838, 0, 2.20838, 4.82693, 2.20838, 6.93871, 0, 6.93871, 0, 0.301683)
+
+[connection signal="pressed" from="Scene_switch/Return_to_main" to="Scene_switch" method="_on_return_to_main_pressed"]
+[connection signal="pressed" from="Scene_switch/Restart" to="Scene_switch" method="_on_restart_pressed"]
+[connection signal="pressed" from="Scene_switch/back to game" to="Scene_switch" method="_on_back_to_game_pressed"]

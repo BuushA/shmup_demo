@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://cn6leqefso6dt"]
+
+[ext_resource type="Script" path="res://scripts/object/bullet_enemy_a.gd" id="1_hck11"]
+[ext_resource type="Texture2D" uid="uid://br3oywxl16n5t" path="res://assets/images/cannon_ball.png" id="2_3yxy1"]
+[ext_resource type="Texture2D" uid="uid://e2jld0emf5nb" path="res://assets/images/cannon_spin/cannon_ball_left.png" id="3_wmnuj"]
+[ext_resource type="Texture2D" uid="uid://exyridg014hf" path="res://assets/images/cannon_spin/cannon_ball_down.png" id="4_gb0av"]
+[ext_resource type="Texture2D" uid="uid://coh1rsdfyr3i5" path="res://assets/images/cannon_spin/cannon_ball_right1.png" id="5_hf4s4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gfpgu"]
+radius = 6.93854
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nyxy8"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3yxy1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wmnuj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gb0av")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hf4s4")
+}],
+"loop": true,
+"name": &"cannon_spin",
+"speed": 4.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation_1",
+"speed": 5.0
+}]
+
+[node name="enem_a" type="Area2D" groups=["bullet"]]
+scale = Vector2(1.55298, 1.62764)
+collision_layer = 8
+script = ExtResource("1_hck11")
+b_speed = 1.5
+hit_layer = 5
+hit_mask = 1
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.742431, 0.742431)
+shape = SubResource("CircleShape2D_gfpgu")
+debug_color = Color(0.192157, 0.623529, 0.427451, 0.419608)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-2.38419e-07, -2.38419e-07)
+scale = Vector2(1.33372, 1.08813)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_nyxy8")
+animation = &"cannon_spin"
+autoplay = "cannon_spin"
+frame_progress = 0.226306
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

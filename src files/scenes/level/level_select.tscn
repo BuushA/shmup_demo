@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3g3rq87saug"]
+
+[ext_resource type="Script" path="res://scripts/env/level_select_scene_switcher.gd" id="1_amcj0"]
+
+[node name="Level_Select" type="Node2D"]
+script = ExtResource("1_amcj0")
+
+[node name="First" type="Button" parent="."]
+offset_left = 64.0
+offset_top = 72.0
+offset_right = 343.0
+offset_bottom = 255.0
+theme_override_font_sizes/font_size = 128
+text = "First"
+
+[node name="Return" type="Button" parent="."]
+offset_left = 456.0
+offset_top = 800.0
+offset_right = 677.0
+offset_bottom = 896.0
+theme_override_font_sizes/font_size = 64
+text = "Return"
+
+[connection signal="pressed" from="First" to="." method="_on_first_pressed"]
+[connection signal="pressed" from="Return" to="." method="_on_return_pressed"]

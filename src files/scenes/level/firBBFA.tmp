@@ -1,0 +1,392 @@
+[gd_scene load_steps=28 format=3 uid="uid://dopko16v6jdiw"]
+
+[ext_resource type="Script" path="res://scripts/env/one_test.gd" id="1_wj5xi"]
+[ext_resource type="Script" path="res://scripts/object/movement.gd" id="2_ccc2x"]
+[ext_resource type="PackedScene" uid="uid://di5hrhsqgwf1w" path="res://scenes/char/basic_enemy.tscn" id="3_0s3td"]
+[ext_resource type="Texture2D" uid="uid://dm31jrlo23cuy" path="res://assets/icon.svg" id="3_hxluf"]
+[ext_resource type="Script" path="res://scripts/env/EVENT - start.gd" id="3_xm12v"]
+[ext_resource type="Script" path="res://scripts/object/Bullets.gd" id="4_1jpw0"]
+[ext_resource type="Script" path="res://scripts/env/bomb.gd" id="5_8mb04"]
+[ext_resource type="Script" path="res://scripts/env/EVENT - new patterns.gd" id="5_aq6w8"]
+[ext_resource type="PackedScene" uid="uid://c3qwr0u2pajjx" path="res://scenes/bullets/a.tscn" id="5_uegxh"]
+[ext_resource type="Script" path="res://scripts/object/player_Collisions.gd" id="7_wntyy"]
+[ext_resource type="Script" path="res://scripts/env/EVENT - D.gd" id="10_18qds"]
+[ext_resource type="PackedScene" uid="uid://bn1ikpum7dy0j" path="res://scenes/char/floating_enemy.tscn" id="10_w2xsk"]
+[ext_resource type="Script" path="res://scripts/env/EVENT - BOSS BATTLe.gd" id="11_m1hkb"]
+[ext_resource type="Script" path="res://scripts/env/EVENT-BOSS SECTION.gd" id="12_4rwwo"]
+[ext_resource type="PackedScene" uid="uid://biouo86hkofbe" path="res://scenes/char/boss.tscn" id="12_ijuea"]
+[ext_resource type="PackedScene" uid="uid://biqpebctypftb" path="res://scenes/level/hud.tscn" id="15_2khi5"]
+[ext_resource type="Script" path="res://scripts/object/boss_Second.gd" id="16_oy6a4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3u2rv"]
+radius = 21.5518
+height = 43.1035
+
+[sub_resource type="Curve2D" id="Curve2D_1b2fm"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 560.202, 28.0711, 40.242, -31.5484, -40.242, 31.5484, 352.744, 108.987, -13.8065, -47.5721, 13.8065, 47.5721, 274.358, 348.101, -55.416, 3.34908, 55.416, -3.34908, 506.998, 441.983, -26.9085, 9.11674, 26.9085, -9.11674, 674.887, 424.956, -41.8208, 19.6429, 41.8208, -19.6429, 874.506, 367.952, -28.3364, 19.5528, 28.3364, -19.5528, 1010.13, 311.375)
+}
+point_count = 7
+
+[sub_resource type="Curve2D" id="Curve2D_322jd"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 16, 254.491, 0, 0, 0, 0, 64, 182.915, 0, 0, 0, 0, 168, 111.34, 0, 0, 0, 0, 336, 79.5284, 0, 0, 0, 0, 504, 71.5756, 0, 0, 0, 0, 888, 103.387, 0, 0, 0, 0, 1120, 206.774, 0, 0, 0, 0, 1224, 254.491)
+}
+point_count = 8
+
+[sub_resource type="Curve2D" id="Curve2D_b1b1f"]
+_data = {
+"points": PackedVector2Array(-448.222, -51.6845, 448.222, 51.6845, 0.214956, 31.8106, 0.0470645, -124.879, -0.0470645, 124.879, 514.568, 378.309, 391.278, -12.2277, -391.278, 12.2277, -3.7007, 636.266, 0, 0, 0, 0, -195.75, 629.596)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_lrgq0"]
+_data = {
+"points": PackedVector2Array(483.679, 0.987757, -483.679, -0.987757, 1080.24, 32.5513, 2.54337, -42.1942, -2.54337, 42.1942, 642.565, 377.454, -445.543, -8.27197, 445.543, 8.27197, 1084.27, 629.001, 0, 0, 0, 0, 1236.43, 651.844)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_spqq0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 420.323, 7.09791, 0, 0, 0, 0, 484.004, 13.6082, -0.295898, -43.7891, 0.295898, 43.7891, 697.22, 178.263, -5.8593, -76.9269, 5.8593, 76.9269, 403, 442.678, -20.9983, -53.5145, 20.9983, 53.5145, 700.23, 623.612, 0, 0, 0, 0, 414.332, 935.689, 0, 0, 0, 0, 428.721, 1046.97)
+}
+point_count = 7
+
+[sub_resource type="Curve2D" id="Curve2D_pqgjk"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1081.32, 191.605, 198.851, -140.812, -198.851, 140.812, 561.17, 171.219, 0, 0, 0, 0, -102.6, 207.464)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_vb82o"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 8.05356, 7.89924, 0, 0, 0, 0, 1086.37, 939.155, 0, 0, 0, 0, 1263.23, 1065.22)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_3r0qt"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1079.98, -7.21199, 0, 0, 0, 0, 14.4485, 954.266, 0, 0, 0, 0, -128.581, 1098.38)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_7ehn2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 3.1706, 469.207, 0, 0, 0, 0, 1075.09, 454.096, 0, 0, 0, 0, 1306.93, 428.689)
+}
+point_count = 3
+
+[node name="First_level" type="Node2D" node_paths=PackedStringArray("start_event")]
+position = Vector2(-8, 48)
+rotation = 0.00671742
+scale = Vector2(1, 1.00593)
+script = ExtResource("1_wj5xi")
+start_event = NodePath("EVENT - BOSS BATTLE")
+player_lives = 3
+player_bombs = 3
+events_path_value = 10
+
+[node name="Character" type="CharacterBody2D" parent="." groups=["player"]]
+position = Vector2(544, 723.712)
+collision_mask = 4
+script = ExtResource("2_ccc2x")
+move_speed = 375
+shift_speed = 1.35
+player_size = 24.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Character"]
+position = Vector2(3.8147e-06, 3.8147e-06)
+scale = Vector2(0.492188, 0.492188)
+texture = ExtResource("3_hxluf")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="Character"]
+scale = Vector2(0.571007, 0.571007)
+shape = SubResource("CapsuleShape2D_3u2rv")
+
+[node name="Weapon" type="Node2D" parent="Character"]
+position = Vector2(0, -35)
+scale = Vector2(1.21502, 16.0433)
+script = ExtResource("4_1jpw0")
+shoot_position = 60
+first_bullet = ExtResource("5_uegxh")
+shoot_speed = 0.35
+starting_upgrade_points = 3000
+
+[node name="bomb" type="Node" parent="Character"]
+script = ExtResource("5_8mb04")
+
+[node name="collision_area" type="Area2D" parent="Character"]
+collision_mask = 252
+
+[node name="Collisions" type="Node" parent="Character/collision_area"]
+script = ExtResource("7_wntyy")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="Character/collision_area"]
+visible = false
+scale = Vector2(0.571007, 0.571007)
+shape = SubResource("CapsuleShape2D_3u2rv")
+debug_color = Color(0.972549, 0.133333, 0.262745, 0.419608)
+
+[node name="EVENT - start FLOAT" type="Node" parent="." node_paths=PackedStringArray("follow_path", "next_event")]
+script = ExtResource("3_xm12v")
+follow_path = NodePath("../FL_start_path/follow_start")
+enemy = ExtResource("3_0s3td")
+en_float_speed = 4.0
+en_speed_modifier = 3.0
+en_cooldown = 5.0
+en_bullet_speed = 1.0
+en_bullet_type = 2
+en_kill_score = 20
+en_first_shot = false
+wait_1 = 1.0
+mob_spawn_rate = 0.5
+enemy_count = 25
+next_event = NodePath("../EVENT - start")
+
+[node name="EVENT - start" type="Node" parent="." node_paths=PackedStringArray("follow_path", "next_event")]
+script = ExtResource("3_xm12v")
+follow_path = NodePath("../start_path/follow_start")
+enemy = ExtResource("3_0s3td")
+en_float_speed = 4.0
+en_speed_modifier = 3.0
+en_bullet_count = 32
+en_cooldown = 1.0
+en_bullet_speed = 2.0
+en_bullet_type = 3
+en_kill_score = 150
+en_first_shot = false
+wait_1 = 2.0
+mob_spawn_rate = 0.5
+enemy_count = 8
+next_event = NodePath("../EVENT - FLOAT")
+
+[node name="EVENT - FLOAT" type="Node" parent="." node_paths=PackedStringArray("follow_path", "next_event")]
+script = ExtResource("3_xm12v")
+follow_path = NodePath("../FL_path/follow_start")
+enemy = ExtResource("10_w2xsk")
+en_float_speed = 5.0
+en_speed_modifier = 3.0
+en_bullet_count = 12
+en_cooldown = 0.5
+en_bullet_speed = 1.8
+en_kill_score = 20
+en_first_shot = false
+wait_1 = 1.0
+mob_spawn_rate = 0.5
+enemy_count = 20
+next_event = NodePath("../EVENT - FLOAT 2")
+
+[node name="EVENT - FLOAT 2" type="Node" parent="." node_paths=PackedStringArray("follow_path", "next_event")]
+script = ExtResource("3_xm12v")
+follow_path = NodePath("../FL2_path/follow_start")
+enemy = ExtResource("10_w2xsk")
+en_float_speed = 5.0
+en_speed_modifier = 3.0
+en_bullet_count = 16
+en_cooldown = 1.0
+en_bullet_speed = 1.8
+en_kill_score = 20
+wait_1 = 1.0
+mob_spawn_rate = 0.5
+enemy_count = 20
+next_event = NodePath("../EVENT - A")
+
+[node name="EVENT - A" type="Node" parent="." node_paths=PackedStringArray("follow_path", "follow_path1", "next_event")]
+script = ExtResource("5_aq6w8")
+follow_path = NodePath("../A_path/follow_start")
+follow_path1 = NodePath("../AA_path/follow_start")
+enemy = ExtResource("3_0s3td")
+en_float_speed = 6.0
+en_speed_modifier = 3.0
+en_bullet_count = 24
+en_cooldown = 0.75
+en_bullet_speed = 1.8
+en_kill_score = 150
+en_first_shot = false
+wait_1 = 1.0
+mob_spawn_rate = 1.0
+enemy_count = 10
+next_event = NodePath("../EVENT - B")
+
+[node name="EVENT - B" type="Node" parent="." node_paths=PackedStringArray("follow_path", "next_event")]
+script = ExtResource("3_xm12v")
+follow_path = NodePath("../B_path/follow_start")
+enemy = ExtResource("3_0s3td")
+en_float_speed = 5.0
+en_speed_modifier = 3.0
+en_bullet_count = 128
+en_cooldown = 0.2
+en_bullet_speed = 1.8
+en_bullet_type = 3
+en_kill_score = 50
+en_first_shot = false
+wait_1 = 1.0
+mob_spawn_rate = 0.5
+enemy_count = 25
+next_event = NodePath("../EVENT - C")
+
+[node name="EVENT - C" type="Node" parent="." node_paths=PackedStringArray("follow_path", "next_event")]
+script = ExtResource("3_xm12v")
+follow_path = NodePath("../C_path/follow_start")
+enemy = ExtResource("3_0s3td")
+en_float_speed = 7.0
+en_speed_modifier = 3.0
+en_bullet_count = 28
+en_cooldown = 0.5
+en_bullet_speed = 2.0
+en_kill_score = 100
+en_first_shot = false
+wait_1 = 2.0
+mob_spawn_rate = 0.25
+enemy_count = 32
+next_event = NodePath("../EVENT - D")
+
+[node name="EVENT - D" type="Node" parent="." node_paths=PackedStringArray("follow_path1", "follow_path2", "follow_path", "next_event")]
+script = ExtResource("10_18qds")
+wait_second = 3
+follow_path1 = NodePath("../DA_path/follow_start")
+wait_third = 3
+follow_path2 = NodePath("../DB_path/follow_start")
+follow_path = NodePath("../D_path/follow_start")
+enemy = ExtResource("3_0s3td")
+en_float_speed = 5.0
+en_speed_modifier = 3.0
+en_bullet_count = 24
+en_cooldown = 0.75
+en_bullet_speed = 2.0
+en_bullet_type = 3
+en_kill_score = 100
+wait_1 = 5.0
+mob_spawn_rate = 1.0
+enemy_count = 20
+next_event = NodePath("../EVENT - BOSS BATTLE")
+
+[node name="EVENT - BOSS BATTLE" type="Node" parent="." node_paths=PackedStringArray("boss_position", "first_section")]
+script = ExtResource("11_m1hkb")
+time_start = 1
+enemy = ExtResource("12_ijuea")
+boss_hitpoint = 2000.0
+boss_position = NodePath("../boss_pos")
+first_section = NodePath("First")
+
+[node name="First" type="Node" parent="EVENT - BOSS BATTLE"]
+script = ExtResource("12_4rwwo")
+
+[node name="Second" type="Node" parent="EVENT - BOSS BATTLE"]
+script = ExtResource("16_oy6a4")
+bullet_speed = 1.5
+bullet_cycles = 7
+bullet_count = 64
+cd_bull = 0.01
+cd_cycl = 0.1
+cd_loop = 1.5
+rotations = 15
+
+[node name="Third" type="Node" parent="EVENT - BOSS BATTLE"]
+
+[node name="FL_start_path" type="Path2D" parent="." groups=["Path"]]
+visible = false
+position = Vector2(-16.3758, -55.5618)
+curve = SubResource("Curve2D_1b2fm")
+
+[node name="follow_start" type="PathFollow2D" parent="FL_start_path"]
+position = Vector2(560.202, 28.0711)
+rotation = 2.76971
+
+[node name="start_path" type="Path2D" parent="." groups=["Path"]]
+visible = false
+position = Vector2(-16, 0)
+curve = SubResource("Curve2D_322jd")
+
+[node name="follow_start" type="PathFollow2D" parent="start_path"]
+position = Vector2(16, 254.491)
+rotation = -0.980065
+cubic_interp = false
+loop = false
+
+[node name="FL_path" type="Path2D" parent="." groups=["Path"]]
+visible = false
+position = Vector2(-291.765, 575.386)
+rotation = -0.935983
+curve = SubResource("Curve2D_1b2fm")
+
+[node name="follow_start" type="PathFollow2D" parent="FL_path"]
+position = Vector2(560.202, 28.0711)
+rotation = 2.76971
+
+[node name="FL2_path" type="Path2D" parent="." groups=["Path"]]
+visible = false
+position = Vector2(461.613, 840.009)
+rotation = -1.26768
+curve = SubResource("Curve2D_1b2fm")
+
+[node name="follow_start" type="PathFollow2D" parent="FL2_path"]
+position = Vector2(560.202, 28.0711)
+rotation = 2.76971
+
+[node name="A_path" type="Path2D" parent="." groups=["Path"]]
+visible = false
+position = Vector2(8.05356, 7.89924)
+curve = SubResource("Curve2D_b1b1f")
+
+[node name="follow_start" type="PathFollow2D" parent="A_path"]
+position = Vector2(0.214956, 31.8106)
+rotation = 0.114803
+
+[node name="AA_path" type="Path2D" parent="." groups=["Path"]]
+visible = false
+curve = SubResource("Curve2D_lrgq0")
+
+[node name="follow_start" type="PathFollow2D" parent="AA_path"]
+position = Vector2(1080.24, 32.5513)
+rotation = -3.13955
+
+[node name="B_path" type="Path2D" parent="." groups=["Path"]]
+visible = false
+position = Vector2(-1297.97, 0)
+scale = Vector2(3.39269, 1)
+curve = SubResource("Curve2D_spqq0")
+
+[node name="follow_start" type="PathFollow2D" parent="B_path"]
+visible = false
+position = Vector2(420.323, 7.09791)
+rotation = 0.101879
+
+[node name="C_path" type="Path2D" parent="." groups=["Path"]]
+visible = false
+curve = SubResource("Curve2D_pqgjk")
+
+[node name="follow_start" type="PathFollow2D" parent="C_path"]
+position = Vector2(1081.32, 191.605)
+rotation = -3.10242
+
+[node name="D_path" type="Path2D" parent="." groups=["Path"]]
+visible = false
+curve = SubResource("Curve2D_vb82o")
+
+[node name="follow_start" type="PathFollow2D" parent="D_path"]
+visible = false
+position = Vector2(8.05356, 7.89924)
+rotation = 0.712348
+
+[node name="DA_path" type="Path2D" parent="." groups=["Path"]]
+visible = false
+curve = SubResource("Curve2D_3r0qt")
+
+[node name="follow_start" type="PathFollow2D" parent="DA_path"]
+position = Vector2(1079.98, -7.21199)
+rotation = 2.40748
+
+[node name="DB_path" type="Path2D" parent="." groups=["Path"]]
+visible = false
+curve = SubResource("Curve2D_7ehn2")
+
+[node name="follow_start" type="PathFollow2D" parent="DB_path"]
+position = Vector2(3.1706, 469.207)
+rotation = -0.0140962
+
+[node name="boss_pos" type="Marker2D" parent="."]
+position = Vector2(544.425, 139.515)
+scale = Vector2(2.28535, 1)
+
+[node name="HUD" parent="." instance=ExtResource("15_2khi5")]

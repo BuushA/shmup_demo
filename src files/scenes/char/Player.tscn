@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://wmxee7cx64jn"]
+
+[ext_resource type="Script" path="res://scripts/object/movement.gd" id="1_s7isy"]
+[ext_resource type="Texture2D" uid="uid://d2ia5lwvs6bhu" path="res://assets/images/player_laivas.png" id="2_8atfu"]
+[ext_resource type="Script" path="res://scripts/object/Bullets.gd" id="3_k6gtk"]
+[ext_resource type="PackedScene" uid="uid://c3qwr0u2pajjx" path="res://scenes/bullets/a.tscn" id="4_2sj0t"]
+[ext_resource type="Script" path="res://scripts/env/bomb.gd" id="5_fdiuq"]
+[ext_resource type="Script" path="res://scripts/object/player_Collisions.gd" id="6_8pv52"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j0s5e"]
+radius = 8.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5k7t5"]
+radius = 21.5518
+height = 43.1035
+
+[node name="Character" type="CharacterBody2D" groups=["player"]]
+position = Vector2(416, 352)
+collision_mask = 4
+script = ExtResource("1_s7isy")
+move_speed = 500
+shift_speed = 1.5
+player_size = 24.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.64, 0.64)
+texture = ExtResource("2_8atfu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1, 0.95999)
+shape = SubResource("CircleShape2D_j0s5e")
+
+[node name="Bullets" type="Node2D" parent="."]
+position = Vector2(0, -35)
+scale = Vector2(1.21502, 16.0433)
+script = ExtResource("3_k6gtk")
+shoot_position = 10
+first_bullet = ExtResource("4_2sj0t")
+
+[node name="bomb" type="Node" parent="."]
+script = ExtResource("5_fdiuq")
+
+[node name="collision_area" type="Area2D" parent="."]
+collision_mask = 8
+monitorable = false
+
+[node name="Collisions" type="Node" parent="collision_area"]
+script = ExtResource("6_8pv52")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="collision_area"]
+visible = false
+scale = Vector2(0.571007, 0.571007)
+shape = SubResource("CapsuleShape2D_5k7t5")
+debug_color = Color(0.972549, 0.133333, 0.262745, 0.419608)

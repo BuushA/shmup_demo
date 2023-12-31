@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://biouo86hkofbe"]
+
+[ext_resource type="Script" path="res://scripts/object/boss.gd" id="1_6jtvj"]
+[ext_resource type="PackedScene" uid="uid://cn6leqefso6dt" path="res://scenes/bullets/enemy_a.tscn" id="2_qjqrd"]
+[ext_resource type="Texture2D" uid="uid://g8vxjx2ngelx" path="res://assets/images/FURBY1.png" id="3_n3opl"]
+[ext_resource type="AudioStream" uid="uid://m0fia2w73b7h" path="res://assets/sounds and music/boss_death.mp3" id="3_n501c"]
+[ext_resource type="AudioStream" uid="uid://klevntq5krd1" path="res://assets/sounds and music/boss_hit.mp3" id="4_s0pjg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1rrn6"]
+radius = 11.558
+height = 23.1159
+
+[node name="Boss" type="Area2D"]
+scale = Vector2(1.55298, 1.62764)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_6jtvj")
+bullet = ExtResource("2_qjqrd")
+death_music = ExtResource("3_n501c")
+hit_sound = ExtResource("4_s0pjg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2.6742, 2.6742)
+shape = SubResource("CapsuleShape2D_1rrn6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_n3opl")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

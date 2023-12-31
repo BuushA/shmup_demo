@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://di5hrhsqgwf1w"]
+
+[ext_resource type="Script" path="res://scripts/object/basic_enemy.gd" id="1_mg1jb"]
+[ext_resource type="Texture2D" uid="uid://dm31jrlo23cuy" path="res://assets/icon.svg" id="1_r2l5i"]
+[ext_resource type="PackedScene" uid="uid://cn6leqefso6dt" path="res://scenes/bullets/enemy_a.tscn" id="2_kxdqv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2r8i"]
+size = Vector2(48, 32)
+
+[node name="Basic_enemy" type="Area2D" groups=["Enemy"]]
+scale = Vector2(0.956148, 1)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_mg1jb")
+bullet = ExtResource("2_kxdqv")
+float_speed = 4
+speed_modifier = 3
+coordinate_x = 0
+bullet_count = 4
+shoot_distance = 40
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_c2r8i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.328735, 0.220235)
+texture = ExtResource("1_r2l5i")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-2.38419e-07, -2.38419e-07)
+scale = Vector2(1.33372, 1.08813)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

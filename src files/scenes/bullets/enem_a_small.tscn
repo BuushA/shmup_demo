@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bobxke241ag87"]
+
+[ext_resource type="Script" path="res://scripts/object/bullet_enemy_a.gd" id="1_jmv68"]
+[ext_resource type="Texture2D" uid="uid://ic4tp3gd8fl7" path="res://assets/images/small_orb.png" id="2_q4ivc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gfpgu"]
+radius = 6.93854
+
+[node name="enem_a_small" type="Area2D" groups=["bullet"]]
+scale = Vector2(1.55298, 1.62764)
+collision_layer = 8
+script = ExtResource("1_jmv68")
+b_speed = 1.5
+hit_layer = 5
+hit_mask = 1
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.742431, 0.742431)
+shape = SubResource("CircleShape2D_gfpgu")
+debug_color = Color(0.192157, 0.623529, 0.427451, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4.76837e-07, 0)
+scale = Vector2(1.25757, 1.25757)
+texture = ExtResource("2_q4ivc")
